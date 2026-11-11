@@ -8,131 +8,104 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       background: #0d0608;
-      background-image: 
-        radial-gradient(circle at 50% 15%, rgba(164, 22, 26, 0.22) 0%, transparent 60%),
-        repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.35) 0px, rgba(0, 0, 0, 0.35) 1px, transparent 1px, transparent 3px);
       color: #c4b5b8;
       font-family: 'Share Tech Mono', monospace;
       line-height: 1.6;
-      padding-bottom: 50px;
+      transition: background 0.4s, color 0.4s;
     }
+    body.very-dark {
+      background: #000000;
+      color: #660708;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 30px;
+      background: #17070a;
+      border-bottom: 2px solid #a4161a;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    body.very-dark nav { background: #050001; border-color: #ba181b; }
+    .brand { font-family: 'Creepster', cursive; font-size: 2rem; color: #e5383b; letter-spacing: 2px; }
+    .mode-btn {
+      background: #660708;
+      color: #fff;
+      border: 1px solid #ba181b;
+      padding: 8px 16px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    .mode-btn:hover { background: #e5383b; color: #000; }
     .hero {
       text-align: center;
-      padding: 80px 20px 60px;
-      background: radial-gradient(circle at center, rgba(164, 22, 26, 0.28) 0%, rgba(13, 6, 8, 0.95) 75%);
-      border-bottom: 2px solid #660708;
+      padding: 70px 20px;
+      background: radial-gradient(circle at center, rgba(164, 22, 26, 0.25) 0%, rgba(13, 6, 8, 0.95) 75%);
     }
-    .hero h1 {
-      font-family: 'Creepster', cursive;
-      font-size: clamp(2.8rem, 6vw, 4.2rem);
-      color: #e5383b;
-      letter-spacing: 3px;
-      text-shadow: 0 0 12px rgba(229, 56, 59, 0.75), 0 0 25px rgba(164, 22, 26, 0.4);
-    }
-    .hero p {
-      max-width: 720px;
-      margin: 18px auto 0;
-      color: #a39295;
-      font-size: 1.1rem;
-      letter-spacing: 0.5px;
-    }
-    .container {
-      max-width: 1000px;
-      margin: 45px auto;
-      padding: 0 20px;
-    }
+    .hero h1 { font-family: 'Creepster', cursive; font-size: 3.5rem; color: #e5383b; text-shadow: 0 0 10px rgba(229, 56, 59, 0.7); }
+    .hero p { max-width: 680px; margin: 15px auto; color: #a39295; font-size: 1.05rem; }
+    .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
     .card {
       background: #18090c;
       border: 1px solid #660708;
       border-left: 5px solid #a4161a;
-      padding: 26px;
+      padding: 25px;
       border-radius: 8px;
       margin-bottom: 28px;
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
     }
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: #e5383b;
-      box-shadow: 0 6px 22px rgba(164, 22, 26, 0.35);
-    }
-    .card h2 {
-      font-family: 'Share Tech Mono', monospace;
-      color: #e5383b;
-      margin-bottom: 14px;
-      font-size: 1.55rem;
-      text-shadow: 0 0 6px rgba(229, 56, 59, 0.4);
-      letter-spacing: 1px;
-    }
-    .card p {
-      margin-bottom: 12px;
-      color: #c4b5b8;
-    }
-    .card ul {
-      margin-left: 22px;
-      margin-bottom: 12px;
-      color: #b5a4a7;
-    }
-    .card ul li {
-      margin-bottom: 6px;
-    }
+    body.very-dark .card { background: #070002; border-color: #3f0305; border-left-color: #660708; }
+    .card:hover { transform: translateY(-4px); border-color: #e5383b; box-shadow: 0 6px 20px rgba(164, 22, 26, 0.3); }
+    .card h2 { color: #e5383b; margin-bottom: 12px; font-size: 1.5rem; }
     .tor-box {
       background: #200c10;
       border: 1px dashed #e5383b;
-      padding: 22px;
+      padding: 20px;
       border-radius: 6px;
-      margin-top: 18px;
-      box-shadow: inset 0 0 15px rgba(102, 7, 8, 0.35);
-    }
-    .tor-box strong {
-      color: #e5383b;
-      display: inline-block;
-      margin-bottom: 8px;
-      font-size: 1.05rem;
-    }
-    .tor-box code {
-      background: #0d0608;
-      color: #e5383b;
-      padding: 2px 6px;
-      border-radius: 4px;
-      border: 1px solid #660708;
-    }
-    .warning-box {
-      background: #1d070b;
-      border-left: 4px solid #ba181b;
-      padding: 14px 18px;
       margin-top: 15px;
-      border-radius: 4px;
-      color: #e5a4a8;
     }
+    #backToTop {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #a4161a;
+      color: #fff;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 50px;
+      font-family: inherit;
+      font-weight: bold;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 0 15px rgba(229, 56, 59, 0.6);
+      transition: background 0.3s, transform 0.3s;
+    }
+    #backToTop:hover { background: #e5383b; transform: scale(1.1); }
     footer {
       background: #080204;
       text-align: center;
-      padding: 35px 20px;
+      padding: 30px 20px;
       border-top: 1px solid #660708;
       color: #7a6367;
-      font-size: 0.9rem;
-      margin-top: 50px;
+      font-size: 0.88rem;
     }
-    footer a {
-      color: #e5383b;
-      text-decoration: none;
-      margin: 0 10px;
-      transition: color 0.2s;
-    }
-    footer a:hover {
-      text-decoration: underline;
-      color: #ff758f;
-    }
+    footer a { color: #e5383b; text-decoration: none; margin: 0 8px; }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
+  <nav>
+    <div class="brand">☠ ShadowWeb</div>
+    <button class="mode-btn" onclick="toggleVeryDark()" id="modeToggle">Very Dark Mode: OFF</button>
+  </nav>
 
   <section class="hero">
     <h1>THE ABYSS OF CYBERSPACE</h1>
@@ -142,48 +115,52 @@
   <div class="container">
     <div class="card">
       <h2>1. Surface Web vs. Deep Web vs. Dark Web</h2>
-      <p>The Surface Web makes up roughly 4-5% of the total internet. The Deep Web includes unindexed databases, medical portals, academic archives, and private bank records. The Dark Web is a tiny specialized fraction accessible only through encrypted routing protocols.</p>
-      <ul>
-        <li><strong>Surface Web:</strong> Google-indexed, open, accessible by standard browsers.</li>
-        <li><strong>Deep Web:</strong> Password-protected, dynamic query results, private intranets, confidential records.</li>
-        <li><strong>Dark Web:</strong> Anonymized overlay networks requiring specialized routing tunnels.</li>
-      </ul>
+      <p>The Surface Web makes up roughly 4-5% of the total internet. The Deep Web includes unindexed databases, medical portals, and bank records. The Dark Web is a tiny specialized fraction accessible only through encrypted routing protocols.</p>
     </div>
 
     <div class="card">
-      <h2>2. Tor Browser & The Tor Onion Network Specifically</h2>
-      <p>The Onion Router (Tor) is the primary gateway to the dark web. It operates by routing data packets across thousands of volunteer-run encrypted nodes known as relays.</p>
-      
+      <h2>2. Tor Browser & The Onion Routing Network</h2>
+      <p>The Onion Router (Tor) wraps internet traffic in multiple layers of encryption, bouncing packets through distributed volunteer nodes (guard, middle, and exit relays) to obscure IP identity and physical location.</p>
       <div class="tor-box">
-        <strong>🔒 Multi-Layered Onion Routing Protocol</strong>
-        <p>Traffic is wrapped in successive layers of encryption—like an onion. When packets move through the Tor circuit:</p>
-        <ul style="margin-top: 8px;">
-          <li><strong>Guard Node:</strong> Knows your real IP address but cannot read your traffic or see your destination.</li>
-          <li><strong>Middle Relay:</strong> Passes encrypted packets along without knowing the origin or destination.</li>
-          <li><strong>Exit Relay:</strong> Decrypts the final layer and passes traffic to the destination (or hidden onion service).</li>
-        </ul>
-        <p style="margin-top: 10px;">Dark web hidden services use cryptographically generated 56-character hashes with the <code>.onion</code> pseudo-top-level domain, meaning conventional DNS lookups never touch them.</p>
+        <strong>🔒 The .onion Protocol:</strong> Websites on the dark web do not use standard DNS. Instead, they operate with cryptographically generated hashes ending with the <code>.onion</code> top-level domain.
       </div>
     </div>
 
     <div class="card">
       <h2>3. The Real Concerns & Cybersecurity Risks</h2>
       <p>While the Dark Web facilitates whistleblower safety, political activism, and journalists under oppressive regimes, it also harbors unregulated illicit marketplaces, credential dumps, and advanced ransomware syndicates.</p>
-      <div class="warning-box">
-        <strong>⚠️ Primary Threat Vectors:</strong> Malicious exit node snooping, weaponized exploits targeting browser vulnerabilities, credential harvesting forums, and unregulated criminal services.
-      </div>
     </div>
   </div>
 
+  <button id="backToTop" onclick="scrollToTop()">↑ Back to Top</button>
+
   <footer>
     <p>ShadowWeb — Security Intelligence & Digital Privacy Awareness.</p>
-    <div style="margin-top: 10px;">
+    <div style="margin-top: 8px;">
       <a href="https://www.torproject.org" target="_blank">Tor Project Official</a> |
-      <a href="https://www.eff.org" target="_blank">Electronic Frontier Foundation</a> |
-      <a href="../index.html">View Final Project</a>
+      <a href="https://www.eff.org" target="_blank">Electronic Frontier Foundation</a>
     </div>
   </footer>
 
+  <script>
+    function toggleVeryDark() {
+      document.body.classList.toggle('very-dark');
+      const isDark = document.body.classList.contains('very-dark');
+      document.getElementById('modeToggle').innerText = isDark ? 'Very Dark Mode: ON' : 'Very Dark Mode: OFF';
+    }
+
+    window.onscroll = function() {
+      const btn = document.getElementById('backToTop');
+      if (document.documentElement.scrollTop > 150) {
+        btn.style.display = 'block';
+      } else {
+        btn.style.display = 'none';
+      }
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
-
