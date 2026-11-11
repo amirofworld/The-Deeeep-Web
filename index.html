@@ -3,150 +3,185 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Understanding the Deep Web and Dark Web</title>
+  <title>ShadowWeb — Unmasking The Dark & Deep Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      background: #0d0608;
+      background-image: 
+        radial-gradient(circle at 50% 15%, rgba(164, 22, 26, 0.22) 0%, transparent 60%),
+        repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.35) 0px, rgba(0, 0, 0, 0.35) 1px, transparent 1px, transparent 3px);
+      color: #c4b5b8;
+      font-family: 'Share Tech Mono', monospace;
       line-height: 1.6;
-      color: #333333;
-      background-color: #f7f9fa;
       padding-bottom: 50px;
     }
-    header {
-      background: #1f2937;
-      color: #ffffff;
-      padding: 45px 20px;
+    .hero {
       text-align: center;
+      padding: 80px 20px 60px;
+      background: radial-gradient(circle at center, rgba(164, 22, 26, 0.28) 0%, rgba(13, 6, 8, 0.95) 75%);
+      border-bottom: 2px solid #660708;
     }
-    header h1 {
-      font-size: 2.2rem;
-      margin-bottom: 12px;
+    .hero h1 {
+      font-family: 'Creepster', cursive;
+      font-size: clamp(2.8rem, 6vw, 4.2rem);
+      color: #e5383b;
+      letter-spacing: 3px;
+      text-shadow: 0 0 12px rgba(229, 56, 59, 0.75), 0 0 25px rgba(164, 22, 26, 0.4);
     }
-    header p {
-      font-size: 1.05rem;
-      color: #9ca3af;
-      max-width: 650px;
-      margin: 0 auto;
+    .hero p {
+      max-width: 720px;
+      margin: 18px auto 0;
+      color: #a39295;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
     }
     .container {
-      max-width: 900px;
-      margin: 35px auto;
+      max-width: 1000px;
+      margin: 45px auto;
       padding: 0 20px;
     }
     .card {
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
+      background: #18090c;
+      border: 1px solid #660708;
+      border-left: 5px solid #a4161a;
+      padding: 26px;
       border-radius: 8px;
-      padding: 24px;
-      margin-bottom: 22px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      margin-bottom: 28px;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #e5383b;
+      box-shadow: 0 6px 22px rgba(164, 22, 26, 0.35);
     }
     .card h2 {
-      color: #111827;
-      font-size: 1.4rem;
-      margin-bottom: 12px;
-      padding-bottom: 6px;
-      border-bottom: 2px solid #e5e7eb;
+      font-family: 'Share Tech Mono', monospace;
+      color: #e5383b;
+      margin-bottom: 14px;
+      font-size: 1.55rem;
+      text-shadow: 0 0 6px rgba(229, 56, 59, 0.4);
+      letter-spacing: 1px;
     }
     .card p {
       margin-bottom: 12px;
-      color: #4b5563;
+      color: #c4b5b8;
     }
     .card ul {
-      margin-left: 20px;
-      color: #4b5563;
+      margin-left: 22px;
+      margin-bottom: 12px;
+      color: #b5a4a7;
     }
     .card ul li {
+      margin-bottom: 6px;
+    }
+    .tor-box {
+      background: #200c10;
+      border: 1px dashed #e5383b;
+      padding: 22px;
+      border-radius: 6px;
+      margin-top: 18px;
+      box-shadow: inset 0 0 15px rgba(102, 7, 8, 0.35);
+    }
+    .tor-box strong {
+      color: #e5383b;
+      display: inline-block;
       margin-bottom: 8px;
+      font-size: 1.05rem;
     }
-    .highlight-box {
-      background: #eff6ff;
-      border-left: 4px solid #3b82f6;
-      padding: 14px 18px;
-      margin-top: 14px;
+    .tor-box code {
+      background: #0d0608;
+      color: #e5383b;
+      padding: 2px 6px;
       border-radius: 4px;
+      border: 1px solid #660708;
     }
-    .highlight-box strong {
-      color: #1e40af;
+    .warning-box {
+      background: #1d070b;
+      border-left: 4px solid #ba181b;
+      padding: 14px 18px;
+      margin-top: 15px;
+      border-radius: 4px;
+      color: #e5a4a8;
     }
     footer {
+      background: #080204;
       text-align: center;
-      margin-top: 40px;
-      color: #6b7280;
+      padding: 35px 20px;
+      border-top: 1px solid #660708;
+      color: #7a6367;
       font-size: 0.9rem;
+      margin-top: 50px;
+    }
+    footer a {
+      color: #e5383b;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.2s;
+    }
+    footer a:hover {
+      text-decoration: underline;
+      color: #ff758f;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Understanding the Deep Web & Dark Web</h1>
-    <p>A clear, educational guide to demystify what lies beneath the surface web, separate myths from facts, and address real digital concerns.</p>
-  </header>
+  <section class="hero">
+    <h1>THE ABYSS OF CYBERSPACE</h1>
+    <p>Separating cyber reality from exaggerated myths: Understanding surface web, deep web, and encrypted darknet infrastructure.</p>
+  </section>
 
   <div class="container">
-    <section class="card">
-      <h2>What is the Surface Web?</h2>
-      <p>The Surface Web (also called the Clearnet) is the portion of the World Wide Web that is indexed by standard search engines like Google, Bing, and DuckDuckGo. This represents only roughly 4% to 5% of the total internet content.</p>
+    <div class="card">
+      <h2>1. Surface Web vs. Deep Web vs. Dark Web</h2>
+      <p>The Surface Web makes up roughly 4-5% of the total internet. The Deep Web includes unindexed databases, medical portals, academic archives, and private bank records. The Dark Web is a tiny specialized fraction accessible only through encrypted routing protocols.</p>
       <ul>
-        <li>Public websites, blogs, news channels, and social media feeds</li>
-        <li>Accessible by any standard web browser without special authorization or software</li>
-        <li>Easily searchable and crawlable via public search engine indexing bots</li>
+        <li><strong>Surface Web:</strong> Google-indexed, open, accessible by standard browsers.</li>
+        <li><strong>Deep Web:</strong> Password-protected, dynamic query results, private intranets, confidential records.</li>
+        <li><strong>Dark Web:</strong> Anonymized overlay networks requiring specialized routing tunnels.</li>
       </ul>
-    </section>
+    </div>
 
-    <section class="card">
-      <h2>What is the Deep Web?</h2>
-      <p>The Deep Web represents the vast majority (around 90% to 95%) of all digital content online. Contrary to popular sensationalism, the deep web is not illegal or dangerous—it simply consists of pages that are not indexed by public search engines because they require authentication or reside behind secure barriers.</p>
-      <ul>
-        <li><strong>Private accounts:</strong> Your webmail inbox, online banking dashboards, and social media direct messages.</li>
-        <li><strong>Protected databases:</strong> Academic archives, medical records, government internal portals, and corporate intranets.</li>
-        <li><strong>Dynamic content:</strong> Search queries inside specific databases or behind paywalls and passwords.</li>
-      </ul>
-      <div class="highlight-box">
-        <strong>Important Clarification:</strong> Whenever you log into your private email or online bank account, you are using the deep web. It is essential for basic data privacy and cybersecurity.
+    <div class="card">
+      <h2>2. Tor Browser & The Tor Onion Network Specifically</h2>
+      <p>The Onion Router (Tor) is the primary gateway to the dark web. It operates by routing data packets across thousands of volunteer-run encrypted nodes known as relays.</p>
+      
+      <div class="tor-box">
+        <strong>🔒 Multi-Layered Onion Routing Protocol</strong>
+        <p>Traffic is wrapped in successive layers of encryption—like an onion. When packets move through the Tor circuit:</p>
+        <ul style="margin-top: 8px;">
+          <li><strong>Guard Node:</strong> Knows your real IP address but cannot read your traffic or see your destination.</li>
+          <li><strong>Middle Relay:</strong> Passes encrypted packets along without knowing the origin or destination.</li>
+          <li><strong>Exit Relay:</strong> Decrypts the final layer and passes traffic to the destination (or hidden onion service).</li>
+        </ul>
+        <p style="margin-top: 10px;">Dark web hidden services use cryptographically generated 56-character hashes with the <code>.onion</code> pseudo-top-level domain, meaning conventional DNS lookups never touch them.</p>
       </div>
-    </section>
+    </div>
 
-    <section class="card">
-      <h2>What is the Dark Web?</h2>
-      <p>The Dark Web is a very small, specialized subsection of the deep web (estimated at less than 0.1% of the whole internet). These websites are intentionally hidden and cannot be accessed via conventional browsers.</p>
-      <ul>
-        <li>Requires specialized encrypted routing software and overlay networks.</li>
-        <li>IP addresses and server physical locations are concealed to protect anonymity.</li>
-        <li>Websites use non-standard cryptographic addresses rather than regular domain names like .com or .org.</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>Concerns & Cybersecurity Risks</h2>
-      <p>Because the dark web affords strong layers of anonymity, it creates significant security and legal concerns for individuals and organizations:</p>
-      <ul>
-        <li><strong>Illicit Marketplaces:</strong> Unregulated trade in banned substances, counterfeit documents, and stolen financial records.</li>
-        <li><strong>Cybercrime & Ransomware:</strong> Hackers trade zero-day vulnerabilities, stolen credential databases, and coordinate ransomware extortions.</li>
-        <li><strong>Malware Threats:</strong> Downloading unverified tools or media poses high risks of trojans, keyloggers, and spyware.</li>
-        <li><strong>Scams and Phishing:</strong> Unregulated environments are filled with fraudulent schemes where victims have zero recourse or legal protections.</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>Legitimate Uses of Dark Web Technologies</h2>
-      <p>Despite negative publicity, the encryption techniques underpinning dark web technologies were created to protect sensitive human communication:</p>
-      <ul>
-        <li>Journalists and whistleblowers communicating securely in hostile environments.</li>
-        <li>Citizens living under oppressive surveillance regimes seeking free and uncensored information.</li>
-        <li>Law enforcement and cybersecurity researchers monitoring emerging threats and stolen company data.</li>
-      </ul>
-    </section>
+    <div class="card">
+      <h2>3. The Real Concerns & Cybersecurity Risks</h2>
+      <p>While the Dark Web facilitates whistleblower safety, political activism, and journalists under oppressive regimes, it also harbors unregulated illicit marketplaces, credential dumps, and advanced ransomware syndicates.</p>
+      <div class="warning-box">
+        <strong>⚠️ Primary Threat Vectors:</strong> Malicious exit node snooping, weaponized exploits targeting browser vulnerabilities, credential harvesting forums, and unregulated criminal services.
+      </div>
+    </div>
   </div>
 
   <footer>
-    <p>Educational Portal on Internet Architecture & Cyber Awareness. <br><a href="../index.html" style="color:#4b5563;">View Final Project</a></p>
+    <p>ShadowWeb — Security Intelligence & Digital Privacy Awareness.</p>
+    <div style="margin-top: 10px;">
+      <a href="https://www.torproject.org" target="_blank">Tor Project Official</a> |
+      <a href="https://www.eff.org" target="_blank">Electronic Frontier Foundation</a> |
+      <a href="../index.html">View Final Project</a>
+    </div>
   </footer>
 
 </body>
